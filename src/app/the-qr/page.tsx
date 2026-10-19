@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
   Printer,
@@ -16,7 +16,7 @@ import { ThieuNhi, LopInfo } from '@/types';
 import { DANH_SACH_NGANH } from '@/lib/constants';
 import QRCardItem from '@/components/QRCardItem';
 
-export default function InTheQRPage() {
+function InTheQRContent() {
   const searchParams = useSearchParams();
   const preselectedStudentId = searchParams.get('studentId');
 
@@ -208,5 +208,20 @@ export default function InTheQRPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function InTheQRPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-8 pt-16 text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-red-600 border-t-transparent mb-3"></div>
+          <p className="text-xs text-gray-500 font-bold">Đang chuẩn bị danh sách thẻ đoàn sinh...</p>
+        </div>
+      }
+    >
+      <InTheQRContent />
+    </Suspense>
   );
 }
