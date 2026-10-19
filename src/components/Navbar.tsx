@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { TEN_XU_DOAN, TEN_GIAO_HO } from '@/lib/constants';
 import { CURRENT_USER } from '@/lib/mock-data';
+import GitSyncButton from './GitSyncButton';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -39,6 +40,7 @@ export default function Navbar() {
             </span>
           </div>
           <div className="flex items-center space-x-3 text-xs">
+            <GitSyncButton compact />
             <span className="bg-red-800/90 px-3 py-1 rounded-lg flex items-center gap-1.5 shadow-inner">
               <ShieldCheck className="w-4 h-4 text-yellow-300" />
               <span>{CURRENT_USER.chucVu}:</span>

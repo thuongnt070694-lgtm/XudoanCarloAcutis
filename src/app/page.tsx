@@ -19,6 +19,7 @@ import { DANH_SACH_NGANH, DANH_SACH_LOP_BAN_DAU, TEN_XU_DOAN, TEN_GIAO_HO } from
 import { getStudents, getAttendanceRecords, getClassesWithCount } from '@/lib/storage';
 import { ThieuNhi, LopInfo, DiemDanhRecord } from '@/types';
 import QRScannerModal from '@/components/QRScannerModal';
+import GitSyncButton from '@/components/GitSyncButton';
 
 export default function DashboardPage() {
   const [students, setStudents] = useState<ThieuNhi[]>([]);
@@ -86,6 +87,8 @@ export default function DashboardPage() {
               <Printer className="w-5 h-5 text-yellow-300" />
               <span>In Thẻ Đeo Hàng Loạt (PDF)</span>
             </Link>
+
+            <GitSyncButton />
           </div>
         </div>
 
